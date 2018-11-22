@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Modifier les informations{% endblock %}
+{% block content %}
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-9 col-md-offset-2 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Changer adresse mail</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#"></a></div>
+            </div>
+            <form method="post" id="signupform" class="form-horizontal" role="form">
+                {% csrf_token %}
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-md-15 control">
+                            <label class="col-md-5 control-label">Nouvelle addresse email</label>
+                            <div class="col-md-6">
+                                <input name="new_mail" type="email" placeholder="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 control" align="right">
+                        <button class="btn btn-success" type="submit">Enregistrer</button>
+                    </div>
+                    <div class="col-md-12 control" style="padding-top:15px; font-size:85%">
+                        Revenir à votre <a href="/">Profil</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endblock %}

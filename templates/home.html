@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-5 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+
+            {% if user.is_authenticated %}
+            <div class="panel-heading">
+                <div class="panel-title">Profil</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#"></a></div>
+            </div>
+            <div class="col-md-12 control">
+                <div style="padding-top:15px; font-size:85%">
+                    Bonjour {{ user.first_name }} {{ user.last_name }} !
+                </div>
+            </div>
+            <div class="col-md-12 control">
+                <div style="padding-top:15px; font-size:85%">
+                    Username : {{ user.username }}
+                </div>
+            </div>
+            <div class="col-md-12 control">
+                <div style="padding-top:15px; font-size:85%">
+                    e-mail : {{ user.email }}
+                </div>
+            </div>
+
+            <div class="col-md-12 control" style="padding-top:15px">
+                <a href="{% url 'password_change' %}" class="btn btn-primary btn-block">Modifier son mot de passe</a>
+            </div>
+            <div class="col-md-12 control" style="padding-top:15px">
+                <a href="accounts/change" class="btn btn-primary btn-block">Modifier ses informations</a></div>
+            <div class="col-md-12 control" style="padding-top:15px">
+                <a href="{% url 'logout' %}" class="btn btn-danger btn-block">Se déconnecter</a></div>
+
+            {% else %}
+            <div class="panel-heading">
+                <div class="panel-title" align="center">Commencer</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#"></a></div>
+            </div>
+
+            <div class="col-md-12 control">
+                <div style="padding-top:15px; font-size:85%">
+                    Connexion:
+                </div>
+                <a href="{% url 'login' %}" class="btn btn-success btn-block">Connexion</a>
+
+            </div>
+            <div class="col-md-12 control">
+                <div style="padding-top:15px; font-size:85%">
+                    Créer un compte:
+                </div>
+                <a href="{% url 'signup' %}" class="btn btn-info btn-block">Inscription</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

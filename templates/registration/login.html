@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<meta http-equiv="REFRESH" content="0;url={% url 'home' %}">
+{% else %}
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-5 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Se Connecter</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#"></a></div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <form id="loginform" class="form-horizontal" method="post" role="form">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+
+                    <div class="form-group">
+                        <label class="col-md-6 control-label"> {{ field.label_tag }}</label>
+                        <div class="col-md-6">
+                            {{ field }}
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-10">
+                            <button id="btn-signin" type="submit" class="btn btn-success btn-block"><i
+                                    class="icon-hand-right"></i><input type="submit" hidden>
+                                Se Connecter
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                Vous n'avez pas un compte?
+                                <a href="{% url 'signup' %}">
+                                    S'inscrire içi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% endblock %}
